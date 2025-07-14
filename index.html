@@ -1,15 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Your Name | Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yahea Dada | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --bg: #f9f9f9;
+      --text: #333;
+      --accent: #007bff;
+      --card: #ffffff;
+      --footer: #222;
+      --dark-bg: #121212;
+      --dark-text: #f0f0f0;
+      --dark-card: #1e1e1e;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f9f9f9;
-      color: #333;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: all 0.3s ease;
+    }
+
+    .dark {
+      --bg: var(--dark-bg);
+      --text: var(--dark-text);
+      --card: var(--dark-card);
     }
 
     header {
@@ -22,6 +46,7 @@
     header h1 {
       font-size: 3rem;
       margin-bottom: 10px;
+      animation: fadeIn 1s ease;
     }
 
     header p {
@@ -34,6 +59,9 @@
       justify-content: center;
       background: #111;
       padding: 10px 0;
+      position: sticky;
+      top: 0;
+      z-index: 999;
     }
 
     nav a {
@@ -44,30 +72,38 @@
     }
 
     nav a:hover {
-      text-decoration: underline;
+      color: var(--accent);
     }
 
     section {
       padding: 60px 20px;
-      max-width: 800px;
+      max-width: 900px;
       margin: auto;
     }
 
     h2 {
-      color: #444;
+      color: var(--text);
       margin-bottom: 20px;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+      padding-bottom: 5px;
     }
 
     .project {
-      background: white;
+      background: var(--card);
       padding: 20px;
       border: 1px solid #ddd;
       margin-bottom: 20px;
       border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
     }
 
     footer {
-      background: #222;
+      background: var(--footer);
       color: white;
       text-align: center;
       padding: 20px;
@@ -83,78 +119,152 @@
       background: #eee;
       padding: 8px 12px;
       border-radius: 6px;
+      color: #111;
+    }
+
+    .dark .skill {
+      background: #333;
+      color: #f0f0f0;
     }
 
     a.button {
       display: inline-block;
-      margin-top: 20px;
+      margin-top: 10px;
       padding: 10px 20px;
-      background: #007bff;
+      background: var(--accent);
       color: white;
       text-decoration: none;
       border-radius: 6px;
     }
+
+    .dark-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+      background: #333;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 5px;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
   </style>
 </head>
+
 <body>
 
-<header>
-  <h1>Your Name</h1>
-  <p>Full Stack Developer | Problem Solver | Creator</p>
-</header>
+  <div class="dark-toggle" onclick="toggleDarkMode()">🌗 Toggle Theme</div>
 
-<nav>
-  <a href="#about">About</a>
-  <a href="#projects">Projects</a>
-  <a href="#skills">Skills</a>
-  <a href="#contact">Contact</a>
-</nav>
+  <header>
+    <h1 id="typewriter">Yahea Dada</h1>
+    <p>Front-End Developer</p>
+  </header>
 
-<section id="about">
-  <h2>About Me</h2>
-  <p>Hello! I’m a developer passionate about building useful applications and learning new technologies. I love solving problems, working in teams, and creating beautiful, functional experiences.</p>
-</section>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-<section id="projects">
-  <h2>Projects</h2>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I’m a mobile developer passionate about crafting clean, performant cross-platform apps using Flutter. I thrive on solving meaningful problems and collaborating with awesome teams.</p>
+  </section>
 
-  <div class="project">
-    <h3>Chess Game</h3>
-    <p>An online multiplayer chess game with animations, timers, and offline mode.</p>
-    <a class="button" href="https://yourprojectlink.com" target="_blank">View Project</a>
-  </div>
+  <section id="projects">
+    <h2>Projects</h2>
 
-  <div class="project">
-    <h3>Habit Tracker</h3>
-    <p>A Flutter-based habit tracking app that lets users build and maintain positive routines.</p>
-    <a class="button" href="https://github.com/yourrepo" target="_blank">GitHub Repo</a>
-  </div>
+    <div class="project">
+      <h3>♟ Chess Game</h3>
+      <p>Online multiplayer chess game with animations, real-time timers, and offline support.</p>
+      <a class="button" href="https://github.com/Dada6x/MultiPlayer-Chess-Game" target="_blank">View Project</a>
+    </div>
 
-</section>
+    <div class="project">
+      <h3>🏠 EasyRent</h3>
+      <p>A modern Flutter-based app for property rentals. Features custom filters, map support, and smooth UI design.</p>
+      <a class="button" href="https://github.com/Dada6x/easyrent" target="_blank">View Project</a>
+    </div>
 
-<section id="skills">
-  <h2>Skills</h2>
-  <div class="skills">
-    <div class="skill">Flutter</div>
-    <div class="skill">Dart</div>
-    <div class="skill">Laravel</div>
-    <div class="skill">JavaScript</div>
-    <div class="skill">Git</div>
-    <div class="skill">Firebase</div>
-    <div class="skill">GetX</div>
-  </div>
-</section>
+    <div class="project">
+      <h3>✅ Habit Tracker</h3>
+      <p>A habit tracking app built in Flutter to help users build daily routines with a visual calendar.</p>
+      <a class="button" href="https://github.com/Dada6x/MultiPlayer-Chess-Game" target="_blank">GitHub Repo</a>
+    </div>
 
-<section id="contact">
-  <h2>Contact Me</h2>
-  <p>Email: <a href="mailto:your@email.com">your@email.com</a></p>
-  <p>GitHub: <a href="https://github.com/yourusername" target="_blank">yourusername</a></p>
-  <p>LinkedIn: <a href="https://linkedin.com/in/yourusername" target="_blank">yourusername</a></p>
-</section>
+  </section>
 
-<footer>
-  <p>© 2025 Your Name. All rights reserved.</p>
-</footer>
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="skill">Flutter</div>
+      <div class="skill">Dart</div>
+      <div class="skill">Laravel</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">Firebase</div>
+      <div class="skill">Git</div>
+      <div class="skill">Supabase</div>
+    </div>
+  </section>
 
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:yahieadada@gmail.com">yahieadada@gmail.com</a></p>
+    <p>GitHub: <a href="https://github.com/Dada6x" target="_blank">Dada6x</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/yahea-dada-b03682370/" target="_blank">Yahea Dada</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Yahea Dada. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Dark Mode
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+    }
+
+    // Typing Animation
+    const text = "Yahea Dada";
+    const speed = 100;
+    let i = 0;
+    const header = document.getElementById("typewriter");
+
+    function typeWriter() {
+      if (i < text.length) {
+        header.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    }
+
+    header.innerHTML = "";
+    typeWriter();
+
+    // Scroll Reveal Animation
+    const sections = document.querySelectorAll("section");
+
+    window.addEventListener("scroll", () => {
+      sections.forEach(section => {
+        const top = window.scrollY;
+        const offset = section.offsetTop - 400;
+        if (top >= offset) {
+          section.style.opacity = 1;
+          section.style.transform = "translateY(0)";
+        }
+      });
+    });
+
+    sections.forEach(section => {
+      section.style.opacity = 0;
+      section.style.transform = "translateY(40px)";
+      section.style.transition = "0.6s ease-out";
+    });
+  </script>
 </body>
 </html>
